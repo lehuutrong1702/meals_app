@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:meals_app/models/meal.dart';
+import 'package:meals_app/screens/meal_detail.dart';
 import 'package:meals_app/widgets/meal_item_trait.dart';
 import 'package:transparent_image/transparent_image.dart';
 
@@ -7,6 +8,13 @@ class MealItem extends StatelessWidget {
   MealItem({super.key, required this.meal});
 
   final Meal meal;
+
+  void _viewDetailMeal(BuildContext context) {
+      Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+        return MealDetailScreen(meal: meal) ; 
+      } )) ;
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +24,7 @@ class MealItem extends StatelessWidget {
       clipBehavior: Clip.hardEdge,
       elevation: 2,
       child: InkWell(
-        onTap: () {},
+        onTap: () { _viewDetailMeal(context) ;},
         child: Stack(
           children: [
             FadeInImage(
