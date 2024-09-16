@@ -1,28 +1,33 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:meals_app/providers/meal_provider.dart';
 
 import 'package:meals_app/screens/categories.dart';
 import 'package:meals_app/screens/meals.dart';
 
-class TabsScreen extends StatefulWidget {
+class TabsScreen extends ConsumerStatefulWidget {
   TabsScreen({super.key});
 
   @override
-  State<TabsScreen> createState() {
+  ConsumerState<TabsScreen> createState() {
     return _TabsScreenState();
   }
 }
 
-class _TabsScreenState extends State<TabsScreen> {
+class _TabsScreenState extends ConsumerState<TabsScreen> {
   int _selectedPageIndex = 0;
 
   @override
   Widget build(BuildContext context) {
+
+    final meals = ref.watch(mealsProvider);
+
     Widget activePage = CategoriesScreen();
     String activePageTitle = "Categories";
 
     if (_selectedPageIndex == 1) {
       setState(() {
-        activePage = MealsScreen( meals: []);
+        activePage = MealsScreen( meals: meals);
         activePageTitle = "Favorites";
       });
     }

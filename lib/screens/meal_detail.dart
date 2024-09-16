@@ -17,6 +17,7 @@ class MealDetailScreen extends StatelessWidget {
           overflow: TextOverflow.ellipsis, // very long text ...
           style: const TextStyle(fontSize: 18, color: Colors.white),
         ),
+        actions: [IconButton(onPressed: (){}, icon: const Icon(Icons.star))],
       ),
       body: SingleChildScrollView(
         child: Column(
